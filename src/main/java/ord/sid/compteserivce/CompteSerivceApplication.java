@@ -7,6 +7,8 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.data.repository.config.RepositoryConfiguration;
+import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
 
 import java.util.Date;
 
@@ -22,8 +24,9 @@ public class CompteSerivceApplication{
 
 	//au demarage touts les methode déclarer avec type Bean spring va l'executer
 	@Bean
-	CommandLineRunner start(CompteRepository compteRepository){
+	CommandLineRunner start(CompteRepository compteRepository, RepositoryRestConfiguration restConfiguration){
 		return args -> {
+			restConfiguration.exposeIdsFor(Compte.class);
 			compteRepository.save(new Compte(null,50000,new Date(), TypeCompte.COURANT));
 			compteRepository.save(new Compte(null,90000,new Date(), TypeCompte.EPARGNE));
 			compteRepository.save(new Compte(null,100000,new Date(), TypeCompte.COURANT));
