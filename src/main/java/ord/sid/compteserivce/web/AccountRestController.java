@@ -6,6 +6,7 @@ package ord.sid.compteserivce.web;
 import ord.sid.compteserivce.dtos.VirmentRequestDTO;
 import ord.sid.compteserivce.service.CompteService;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -18,7 +19,7 @@ public class AccountRestController {
         this.compteService=compteService;
     }
     @PutMapping(path = "/comptes/virment")
-    public void virment(VirmentRequestDTO request){
-
+    public void virment(@RequestBody VirmentRequestDTO request){
+        compteService.virment(request.getCodeSource(),request.getCodeDestination(),request.getMontant());
     }
 }
