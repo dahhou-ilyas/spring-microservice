@@ -1,9 +1,6 @@
 package ord.sid.compteserivce.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,5 +16,7 @@ public class Compte {
     private  Long code;
     private double solde;
     private Date dateCreation;
+    @Enumerated(EnumType.STRING)//en spécifier que la valeur dans cette colone soit COURANT ou EPARGNE
+    // @Enumerated(EnumType.ORDINAL) en spécifier que la veur soit 0 ou 1 ...
     private TypeCompte type;
 }
