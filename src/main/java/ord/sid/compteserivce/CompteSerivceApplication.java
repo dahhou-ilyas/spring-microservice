@@ -1,5 +1,7 @@
 package ord.sid.compteserivce;
 
+import io.swagger.v3.oas.models.OpenAPI;
+import io.swagger.v3.oas.models.info.Info;
 import ord.sid.compteserivce.entities.Compte;
 import ord.sid.compteserivce.enums.TypeCompte;
 import ord.sid.compteserivce.repositories.CompteRepository;
@@ -38,6 +40,13 @@ public class CompteSerivceApplication{
 				System.out.println("---------------------------------------");
 			});
 		};
+	}
+	// swagger configuration
+	@Bean
+	public OpenAPI usersMicroserviceOpenAPI(){
+		return new OpenAPI().info(new Info().title("microservice for product")
+				.description("this is microservide for product application")
+				.version("1.0"));
 	}
 
 }
